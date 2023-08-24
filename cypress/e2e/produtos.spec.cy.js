@@ -1,11 +1,9 @@
 /// <reference types="cypress" />
 
-const { constant } = require("cypress/types/lodash");
-
 describe('Funcionalidade Página de produtos', () => {
 
     beforeEach(() => {
-        cy.visit('http://34.171.117.131/produtos/')
+        cy.visit('http://lojaebac.ebaconline.art.br/produtos/')
     });
 
     it('Deve selecionar um produto da lista', () => {
@@ -17,8 +15,8 @@ describe('Funcionalidade Página de produtos', () => {
             .click()
     });
 
-    it.only('Deve adicionar um produto ao carrinho', () => {
-        var quantidade = 3
+    it('Deve adicionar um produto ao carrinho', () => {
+        var quantidade = 10
 
         cy.get('[class="product-block grid"]')
             .contains('Ariel Roll Sleeve Sweatshirt').click()
@@ -32,4 +30,11 @@ describe('Funcionalidade Página de produtos', () => {
 
     });
 
+    it('Deve adicionar produtos ao carrinho - Usando Comando customizado', () => {
+        cy.addProdutos('Aero Daily Fitness Tee', 'M', 'Black', 2)
+    });
+
+    it('Deve adicionar produtos ao carrinho - Usando Comando customizado', () => {
+        cy.addProdutos('Ariel Roll Sleeve Sweatshirt', 'XS', 'Red', 5)
+    });
 });
